@@ -26,12 +26,14 @@
         <start-class>org.rainbow.spring.boot.Application</start-class>
         <smart-cloud.version>0.0.1-SNAPSHOT</smart-cloud.version>
 
-
+        <github-oauth.version>1.0.0</github-oauth.version>
         <apache-oauth2.version>1.0.2</apache-oauth2.version>
         <apache-shiro.version>1.8.0</apache-shiro.version>
+        <spring-boot-shiro.version>1.11.0</spring-boot-shiro.version>
         <shiro-redis.version>2.5.0</shiro-redis.version>
 
         <spring-boot.version>2.6.1</spring-boot.version>
+        <spring-cloud.version>2020.0.2</spring-cloud.version>
         <spring-framework.version>5.3.13</spring-framework.version>
         <spring-boot-dozer.version>6.5.2</spring-boot-dozer.version>
         <spring-boot-sureness.version>1.0.0-beta.2</spring-boot-sureness.version>
@@ -65,7 +67,8 @@
         <dynamic-datasource.version>3.4.1</dynamic-datasource.version>
 
         <java-jwt.version>3.18.2</java-jwt.version>
-        <jjwt.version>0.9.1</jjwt.version>
+        <apache-jjwt-2018.version>0.9.1</apache-jjwt-2018.version>
+        <apache-jjwt-2022.version>0.11.5</apache-jjwt-2022.version>
         <cglib.version>3.3.0</cglib.version>
 
         <pagehelper.version>5.3.0</pagehelper.version>
@@ -642,6 +645,12 @@
                 <version>${shiro-redis.version}</version>
             </dependency>
 
+            <!-- 引入 Shiro 的依赖 -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring-boot-web-starter</artifactId>
+                <version>${spring-boot-shiro.version}</version>
+            </dependency>
             <!--shiro end-->
 
             <!--apache-oauth2 begin-->
@@ -693,37 +702,17 @@
             </dependency>
             <!--apache-oauth2 end-->
 
-
             <dependency>
-                <groupId>org.springframework.security.oauth</groupId>
-                <artifactId>spring-security-oauth2</artifactId>
-                <scope>compile</scope>
-                <version>2.5.0.RELEASE</version>
+                <groupId>com.github.scribejava</groupId>
+                <artifactId>scribejava-apis</artifactId>
+                <version>${oauth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.scribejava</groupId>
+                <artifactId>scribejava-core</artifactId>
+                <version>${oauth.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.security.oauth.boot</groupId>
-                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.usthe.sureness</groupId>
-                <artifactId>sureness-core</artifactId>
-                <version>${sureness.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.usthe.sureness</groupId>
-                <artifactId>spring-boot-starter-sureness</artifactId>
-                <version>${spring-boot-sureness.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.usthe.sureness</groupId>
-                        <artifactId>sureness-core</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
 
             <dependency>
                 <groupId>com.auth0</groupId>
@@ -734,7 +723,24 @@
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
-                <version>${jjwt.version}</version>
+                <version>${apache-jjwt-2018.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${apache-jjwt-2022.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${apache-jjwt-2022.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${apache-jjwt-2022.version}</version>
+                <scope>runtime</scope>
             </dependency>
 
             <dependency>
